@@ -20,10 +20,11 @@ public class Reduction {
     //满减的数量的条件
     private int amount;
     
-    public Reduction(String reductionName,BigDecimal fullamount,BigDecimal reduceAmount) {
+    public Reduction(String reductionName,BigDecimal fullamount,BigDecimal reduceAmount,int amount) {
     	this.reductionName= reductionName;
     	this.fullamount= fullamount;
     	this.reduceAmount= reduceAmount;
+    	this.amount = amount;
     }
     
     /**
