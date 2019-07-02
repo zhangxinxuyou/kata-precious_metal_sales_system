@@ -30,12 +30,12 @@ public abstract class ProductInfo {
 		two.setProductNO("001002");
 		two.setProductName("2019北京世园会纪念银章大全40g");
 		
-		List<DiscountCard> discountCardlist = new ArrayList<DiscountCard>();
-		DiscountCard  discountCard1 = new DiscountCard();
-		discountCard1.setDiscount(new BigDecimal("0.9"));
-		discountCard1.setDiscountCardName(DiscountConstant.NINE_DISCOUNT);
-		discountCardlist.add(discountCard1);
-		two.setDiscountCardList(discountCardlist);
+		List<DiscountCard> discountCardlist2 = new ArrayList<DiscountCard>();
+		DiscountCard  discountCardNine = new DiscountCard();
+		discountCardNine.setDiscount(new BigDecimal("0.9"));
+		discountCardNine.setDiscountCardName(DiscountConstant.NINE_DISCOUNT);
+		discountCardlist2.add(discountCardNine);
+		two.setDiscountCardList(discountCardlist2);
 		map.put("001002",two);
 		
 		
@@ -49,10 +49,10 @@ public abstract class ProductInfo {
 		
 		
 		List<DiscountCard> discountCardlist3 = new ArrayList<DiscountCard>();
-		DiscountCard  discountCard13 = new DiscountCard();
-		discountCard13.setDiscount(new BigDecimal("0.95"));
-		discountCard13.setDiscountCardName(DiscountConstant.NINEFIVE_DISCOUNT);
-		discountCardlist3.add(discountCard13);
+		DiscountCard  discountCardNineFive = new DiscountCard();
+		discountCardNineFive.setDiscount(new BigDecimal("0.95"));
+		discountCardNineFive.setDiscountCardName(DiscountConstant.NINEFIVE_DISCOUNT);
+		discountCardlist3.add(discountCardNineFive);
 		
 		three.setDiscountCardList(discountCardlist3);
 		map.put("003001",three);
@@ -63,12 +63,12 @@ public abstract class ProductInfo {
 		four.setUnits("条");
 		four.setProductNO("003002");
 		four.setProductName("水晶之恋");
-		List<Reduction> list = new ArrayList<Reduction>();
-		Reduction reduction1 = new Reduction(ReductionConstant.THREE_REDUCE_HALFPRICE,null,null,3);
-		Reduction reduction2 = new Reduction(ReductionConstant.THREE_GIVE_ONE,null,null,4);
-		list.add(reduction1);
-		list.add(reduction2);
-		four.setReductionList(list);
+		List<Reduction> listFour = new ArrayList<Reduction>();
+		Reduction reduction_THREE_REDUCE_HALFPRICE = new Reduction(ReductionConstant.THREE_REDUCE_HALFPRICE,null,null,3);
+		Reduction reduction_THREE_GIVE_ONE = new Reduction(ReductionConstant.THREE_GIVE_ONE,null,null,4);
+		listFour.add(reduction_THREE_REDUCE_HALFPRICE);
+		listFour.add(reduction_THREE_GIVE_ONE);
+		four.setReductionList(listFour);
 		map.put("003002",four);
 
 
@@ -77,35 +77,46 @@ public abstract class ProductInfo {
 		five.setUnits("套");
 		five.setProductNO("002002");
 		five.setProductName("中国经典钱币套装");
-		List<Reduction> list1 = new ArrayList<Reduction>();
-		Reduction reduction3 = new Reduction(ReductionConstant.TWOTHOUSAND_REDUCE,new BigDecimal(2000),new BigDecimal(30),0);
-		Reduction reduction4 = new Reduction(ReductionConstant.ONETHOUSAND_REDUCE,new BigDecimal(1000),new BigDecimal(10),0);
-		list1.add(reduction3);
-		list1.add(reduction4);
-		five.setReductionList(list1);
+		List<Reduction> listFive = new ArrayList<Reduction>();
+		Reduction reduction_TWOTHOUSAND_REDUCE = new Reduction(ReductionConstant.TWOTHOUSAND_REDUCE,new BigDecimal(2000),new BigDecimal(30),0);
+		Reduction reduction_ONETHOUSAND_REDUCE = new Reduction(ReductionConstant.ONETHOUSAND_REDUCE,new BigDecimal(1000),new BigDecimal(10),0);
+		listFive.add(reduction_TWOTHOUSAND_REDUCE);
+		listFive.add(reduction_ONETHOUSAND_REDUCE);
+		five.setReductionList(listFive);
 		map.put("002002",five);
 
 
 
 
-		PreciousMetal seven = new PreciousMetal();
-		seven.setPrice(new BigDecimal(1080.00));
-		seven.setUnits("条");
-		seven.setProductNO("002001");
-		seven.setProductName("守扩之羽比翼双飞4.8g");
-		seven.setReductionList(list);
-		map.put("002001",seven);
-
 		PreciousMetal six = new PreciousMetal();
-		six.setPrice(new BigDecimal(698.00));
+		six.setPrice(new BigDecimal(1080.00));
 		six.setUnits("条");
-		six.setProductNO("002003");
-		six.setProductName("中国银象棋12g");
-		six.setReductionList(list);
-		Reduction reduction5 = new Reduction(ReductionConstant.THREETHOUSAND_REDUCE,new BigDecimal(3000),new BigDecimal(350),0);
-		list1.add(reduction5);
-		six.setReductionList(list1);
-		map.put("002003",six);
+		six.setProductNO("002001");
+		six.setProductName("守扩之羽比翼双飞4.8g");
+		List<Reduction> listSix = new ArrayList<Reduction>();
+		listSix.add(reduction_THREE_REDUCE_HALFPRICE);
+		listSix.add(reduction_THREE_GIVE_ONE);
+		six.setReductionList(listSix);
+		map.put("002001",six);
+
+		
+		
+		PreciousMetal seven = new PreciousMetal();
+		seven.setPrice(new BigDecimal(698.00));
+		seven.setUnits("条");
+		seven.setProductNO("002003");
+		seven.setProductName("中国银象棋12g");
+		List<Reduction> list7 = new ArrayList<Reduction>();
+		Reduction reduction_THREETHOUSAND_REDUCE = new Reduction(ReductionConstant.THREETHOUSAND_REDUCE,new BigDecimal(3000),new BigDecimal(350),0);
+		list7.add(reduction_TWOTHOUSAND_REDUCE);
+		list7.add(reduction_ONETHOUSAND_REDUCE);
+		seven.setReductionList(list7);
+		
+		List<DiscountCard> discountCardlist7 = new ArrayList<DiscountCard>();
+
+		discountCardlist7.add(discountCardNine);
+		seven.setDiscountCardList(discountCardlist7);
+		map.put("002003",seven);
 
 
 		
