@@ -6,4 +6,8 @@ public class ReductionConstant {
 	public static final String  ONETHOUSAND_REDUCE = "每满1000元减10";
 	public static final String  THREE_REDUCE_HALFPRICE= "第3件半价";
 	public static final String  THREE_GIVE_ONE= "满3送1";
+	
+	public static final String  NORMAL_TYPE= "NORMAL_TYPE";
+	
+	public static final String  SPECIAL_TYPE= "SPECIAL_TYPE";
 }
