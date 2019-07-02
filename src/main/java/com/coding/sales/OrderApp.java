@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import com.coding.constant.ProductInfo;
+import com.coding.datamodel.DiscountCard;
 import com.coding.datamodel.PreciousMetal;
 import com.coding.datamodel.Reduction;
 import com.coding.sales.input.OrderCommand;
@@ -44,24 +45,71 @@ public class OrderApp {
         
         List<OrderItemCommand> itemList =  command.getItems();
         
+        BigDecimal totalPrice = new BigDecimal(0);
+        
+        BigDecimal totalDiscountAnReductiondPrice = new BigDecimal(0);
         
         
         
         
         for(OrderItemCommand orderItemCommand: itemList) {
         	String proNO =orderItemCommand.getProduct();
+        	
         	BigDecimal amount =  orderItemCommand.getAmount();
         	
         	
         	PreciousMetal preciousMetal =  (PreciousMetal) ProductInfo.map.get(proNO);
+        	//循环相加获得总金额
+        	totalPrice= totalPrice.add(amount.multiply(preciousMetal.getPrice()));
+        	
+              	
+        }
+        //优惠后的金额先初始化为总金额
+        totalDiscountAnReductiondPrice = totalDiscountAnReductiondPrice.add(totalPrice);
+        
+        for(OrderItemCommand orderItemCommand: itemList) {
+        	String proNO =orderItemCommand.getProduct();
+        	
+        	BigDecimal amount =  orderItemCommand.getAmount();
         	
         	
+        	PreciousMetal preciousMetal =  (PreciousMetal) ProductInfo.map.get(proNO);
+        	//循环相加获得总金额
+        	totalPrice= totalPrice.add(amount.multiply(preciousMetal.getPrice()));
         	
-        	//Reduction.getProductAmount(preciousMetal, amount, reduction)
+        	
+        	List<Reduction> reductionList = preciousMetal.getReductionList();
+        	
+        	//获得满减优惠后的金额
+   //==========================================获得满减优惠后的金额=====================  	
+        	for(Reduction reduction : reductionList) {
+        		BigDecimal tempTotalDiscountPrice = Reduction.getProductAmount(preciousMetal, amount, reduction);
+        		
+        		if(tempTotalDiscountPrice.compareTo(totalDiscountAnReductiondPrice)==-1) {
+        			
+        			totalDiscountAnReductiondPrice= tempTotalDiscountPrice;
+        		}
+        		
+        	}
+        	
+        	
+        	List<DiscountCard> discountCardList = preciousMetal.getDiscountCardList();
+        	for(DiscountCard discountCard : discountCardList) {
+        		BigDecimal tempTotalDiscountPrice = DiscountCard.getProductAmount(preciousMetal, amount, discountCard);
+        		
+        		if(tempTotalDiscountPrice.compareTo(totalDiscountAnReductiondPrice)==-1) {
+        			
+        			totalDiscountAnReductiondPrice= tempTotalDiscountPrice;
+        		}
+        		
+        	}
+
         	
         }
+    //================================================获得满减优惠后的金额=====================    
         
-
+        //totalPrice 总金额
+        //totalDiscountAnReductiondPrice满减和打折优惠后需要付款的今昔
         return result;
     }
 }
