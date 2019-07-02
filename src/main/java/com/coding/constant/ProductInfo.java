@@ -64,8 +64,8 @@ public abstract class ProductInfo {
 		four.setProductNO("003002");
 		four.setProductName("水晶之恋");
 		List<Reduction> listFour = new ArrayList<Reduction>();
-		Reduction reduction_THREE_REDUCE_HALFPRICE = new Reduction(ReductionConstant.THREE_REDUCE_HALFPRICE,null,null,3);
-		Reduction reduction_THREE_GIVE_ONE = new Reduction(ReductionConstant.THREE_GIVE_ONE,null,null,4);
+		Reduction reduction_THREE_REDUCE_HALFPRICE = new Reduction(ReductionConstant.THREE_REDUCE_HALFPRICE,null,null,new BigDecimal(3));
+		Reduction reduction_THREE_GIVE_ONE = new Reduction(ReductionConstant.THREE_GIVE_ONE,null,null,new BigDecimal(4));
 		listFour.add(reduction_THREE_REDUCE_HALFPRICE);
 		listFour.add(reduction_THREE_GIVE_ONE);
 		four.setReductionList(listFour);
@@ -78,8 +78,8 @@ public abstract class ProductInfo {
 		five.setProductNO("002002");
 		five.setProductName("中国经典钱币套装");
 		List<Reduction> listFive = new ArrayList<Reduction>();
-		Reduction reduction_TWOTHOUSAND_REDUCE = new Reduction(ReductionConstant.TWOTHOUSAND_REDUCE,new BigDecimal(2000),new BigDecimal(30),0);
-		Reduction reduction_ONETHOUSAND_REDUCE = new Reduction(ReductionConstant.ONETHOUSAND_REDUCE,new BigDecimal(1000),new BigDecimal(10),0);
+		Reduction reduction_TWOTHOUSAND_REDUCE = new Reduction(ReductionConstant.TWOTHOUSAND_REDUCE,new BigDecimal(2000),new BigDecimal(30),null);
+		Reduction reduction_ONETHOUSAND_REDUCE = new Reduction(ReductionConstant.ONETHOUSAND_REDUCE,new BigDecimal(1000),new BigDecimal(10),null);
 		listFive.add(reduction_TWOTHOUSAND_REDUCE);
 		listFive.add(reduction_ONETHOUSAND_REDUCE);
 		five.setReductionList(listFive);
@@ -107,7 +107,7 @@ public abstract class ProductInfo {
 		seven.setProductNO("002003");
 		seven.setProductName("中国银象棋12g");
 		List<Reduction> list7 = new ArrayList<Reduction>();
-		Reduction reduction_THREETHOUSAND_REDUCE = new Reduction(ReductionConstant.THREETHOUSAND_REDUCE,new BigDecimal(3000),new BigDecimal(350),0);
+		Reduction reduction_THREETHOUSAND_REDUCE = new Reduction(ReductionConstant.THREETHOUSAND_REDUCE,new BigDecimal(3000),new BigDecimal(350),null);
 		list7.add(reduction_TWOTHOUSAND_REDUCE);
 		list7.add(reduction_ONETHOUSAND_REDUCE);
 		seven.setReductionList(list7);

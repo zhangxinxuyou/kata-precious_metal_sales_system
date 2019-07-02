@@ -1,6 +1,13 @@
 package com.coding.sales;
 
+import java.math.BigDecimal;
+import java.util.List;
+
+import com.coding.constant.ProductInfo;
+import com.coding.datamodel.PreciousMetal;
+import com.coding.datamodel.Reduction;
 import com.coding.sales.input.OrderCommand;
+import com.coding.sales.input.OrderItemCommand;
 import com.coding.sales.output.OrderRepresentation;
 
 /**
@@ -34,6 +41,26 @@ public class OrderApp {
         OrderRepresentation result = null;
 
         //TODO: 请完成需求指定的功能
+        
+        List<OrderItemCommand> itemList =  command.getItems();
+        
+        
+        
+        
+        
+        for(OrderItemCommand orderItemCommand: itemList) {
+        	String proNO =orderItemCommand.getProduct();
+        	BigDecimal amount =  orderItemCommand.getAmount();
+        	
+        	
+        	PreciousMetal preciousMetal =  (PreciousMetal) ProductInfo.map.get(proNO);
+        	
+        	
+        	
+        	//Reduction.getProductAmount(preciousMetal, amount, reduction)
+        	
+        }
+        
 
         return result;
     }

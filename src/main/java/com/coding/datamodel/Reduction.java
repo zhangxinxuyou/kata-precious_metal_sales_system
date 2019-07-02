@@ -18,9 +18,9 @@ public class Reduction {
     private BigDecimal reduceAmount;
     
     //满减的数量的条件
-    private int amount;
+    private BigDecimal amount;
     
-    public Reduction(String reductionName,BigDecimal fullamount,BigDecimal reduceAmount,int amount) {
+    public Reduction(String reductionName,BigDecimal fullamount,BigDecimal reduceAmount,BigDecimal amount) {
     	this.reductionName= reductionName;
     	this.fullamount= fullamount;
     	this.reduceAmount= reduceAmount;
@@ -67,7 +67,7 @@ public class Reduction {
 					
 					if(proReduction.getReductionName().equals(ReductionConstant.THREE_REDUCE_HALFPRICE)) {
 						//满足第3件半价
-						if(productAmount.compareTo(new BigDecimal(reduction.getAmount()))==1||productAmount.compareTo(new BigDecimal(reduction.getAmount()))==0) {		
+						if(productAmount.compareTo(reduction.getAmount())==1||productAmount.compareTo(reduction.getAmount())==0) {		
 							 BigDecimal lessCount = beforeaccount.divide(reduction.getFullamount(), BigDecimal.ROUND_HALF_UP);
 							 returnAccount = beforeaccount.subtract(preciousMetalPrice.multiply(new BigDecimal("0.5")));
 							 return returnAccount;
@@ -80,7 +80,7 @@ public class Reduction {
 					
 					if(proReduction.getReductionName().equals(ReductionConstant.THREE_GIVE_ONE)) {
 						//满足满3送1
-						if(productAmount.compareTo(new BigDecimal(reduction.getAmount()))==1||productAmount.compareTo(new BigDecimal(reduction.getAmount()))==0) {		
+						if(productAmount.compareTo(reduction.getAmount())==1||productAmount.compareTo(reduction.getAmount())==0) {		
 						    BigDecimal lessCount = beforeaccount.divide(reduction.getFullamount(), BigDecimal.ROUND_HALF_UP);
 						    returnAccount = beforeaccount.subtract(preciousMetalPrice);
 						    return returnAccount;
@@ -140,11 +140,11 @@ public class Reduction {
 		this.type = type;
 	}
 
-	public int getAmount() {
+	public BigDecimal getAmount() {
 		return amount;
 	}
 
-	public void setAmount(int amount) {
+	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
 	} 
 	
