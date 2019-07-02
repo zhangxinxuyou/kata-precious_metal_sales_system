@@ -73,4 +73,20 @@ public class CustomerLevel {
 		return customerLevel;
 	}
 
+	public String getCustomerLevel() {
+		return CustomerLevel;
+	}
+
+	public void setCustomerLevel(String customerLevel) {
+		CustomerLevel = customerLevel;
+	}
+
+	public Long getCustomerIntegral() {
+		return customerIntegral;
+	}
+
+	public void setCustomerIntegral(Long customerIntegral) {
+		this.customerIntegral = customerIntegral;
+	}
+	
 }
