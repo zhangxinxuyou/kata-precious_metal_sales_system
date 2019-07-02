@@ -11,7 +11,7 @@ public class DiscountCard {
      private BigDecimal discount;
     
     
-     public BigDecimal getProductAmount(PreciousMetal preciousMetal,BigDecimal productAmount,DiscountCard discountCard) {
+     public static BigDecimal getProductAmount(PreciousMetal preciousMetal,BigDecimal productAmount,DiscountCard discountCard) {
     	BigDecimal returnAccount = new BigDecimal("0");
  		
  		BigDecimal beforeaccount = new BigDecimal("0");

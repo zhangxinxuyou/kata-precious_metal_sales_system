@@ -34,7 +34,7 @@ public class Reduction {
      * @param reductionName
      * @return
      */
-	public BigDecimal getProductAmount(PreciousMetal preciousMetal,BigDecimal productAmount,Reduction reduction) {
+	public static BigDecimal getProductAmount(PreciousMetal preciousMetal,BigDecimal productAmount,Reduction reduction) {
 		
 		BigDecimal returnAccount = new BigDecimal("0");
 		
@@ -56,7 +56,7 @@ public class Reduction {
 				//满足满减金额的类型,即普通类型
 				if(proReduction.getType().equals(ReductionConstant.NORMAL_TYPE)) {
 					//满足满减金额
-					if(beforeaccount.compareTo(fullamount)==1||beforeaccount.compareTo(fullamount)==0) {		
+					if(beforeaccount.compareTo(reduction.getFullamount())==1||beforeaccount.compareTo(reduction.getFullamount())==0) {		
 					    BigDecimal lessCount = beforeaccount.divide(reduction.getFullamount(), BigDecimal.ROUND_HALF_UP);
 					    returnAccount = beforeaccount.subtract(lessCount);
 					    return returnAccount;
@@ -67,7 +67,7 @@ public class Reduction {
 					
 					if(proReduction.getReductionName().equals(ReductionConstant.THREE_REDUCE_HALFPRICE)) {
 						//满足第3件半价
-						if(productAmount.compareTo(new BigDecimal(amount))==1||productAmount.compareTo(new BigDecimal(amount))==0) {		
+						if(productAmount.compareTo(new BigDecimal(reduction.getAmount()))==1||productAmount.compareTo(new BigDecimal(reduction.getAmount()))==0) {		
 							 BigDecimal lessCount = beforeaccount.divide(reduction.getFullamount(), BigDecimal.ROUND_HALF_UP);
 							 returnAccount = beforeaccount.subtract(preciousMetalPrice.multiply(new BigDecimal("0.5")));
 							 return returnAccount;
@@ -80,7 +80,7 @@ public class Reduction {
 					
 					if(proReduction.getReductionName().equals(ReductionConstant.THREE_GIVE_ONE)) {
 						//满足满3送1
-						if(productAmount.compareTo(new BigDecimal(amount))==1||productAmount.compareTo(new BigDecimal(amount))==0) {		
+						if(productAmount.compareTo(new BigDecimal(reduction.getAmount()))==1||productAmount.compareTo(new BigDecimal(reduction.getAmount()))==0) {		
 						    BigDecimal lessCount = beforeaccount.divide(reduction.getFullamount(), BigDecimal.ROUND_HALF_UP);
 						    returnAccount = beforeaccount.subtract(preciousMetalPrice);
 						    return returnAccount;
